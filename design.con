@@ -1,0 +1,7 @@
+/ContrastName1 Patients>Controls
+/ContrastName2 Controls>Patients
+/NumWaves 2
+/NumContrasts 2
+/Matrix
+1 -1
+-1 1
