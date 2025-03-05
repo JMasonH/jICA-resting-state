@@ -6,7 +6,7 @@ system(cmd);
 
 
 %Reads from specified txt files to get paths to eeg outputs and uses them to form EEG power time courses
-OUT = eeg_power_ts('/fs1/neurdylab/projects/jICA/test_pipeline/EEG_data/EEG_data.txt');
+OUT = eeg_power_ts('/fs1/neurdylab/projects/jICA/test_pipe/EEG_data/EEG_data.txt');
 
 
 %Uses output from previous line to convolve the EEG power time courses with the HRF
@@ -15,7 +15,7 @@ convolve_hrf;
 
 
 %Dual regression of spatial ICA results to single subject fMRI
-OUT = dual_reg_loop('/fs1/neurdylab/projects/jICA/test_pipeline/fmri_data/fmri_data.txt');
+OUT = dual_reg_loop('/fs1/neurdylab/projects/jICA/test_pipe/fmri_data/fmri_data.txt');
 
 
 %Prepare joint time courses for jICA
