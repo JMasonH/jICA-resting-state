@@ -1,13 +1,9 @@
 # Joint ICA for Resting-State fMRI-EEG
 
-This repo contains the code of our ISBI 2025 paper: 
+This repository contains the code of our ISBI 2025 paper: 
 **"Joint Source Decomposition Of Concurrent EEG-fMRI Data in Epilepsy and Control Groups"**
 
 Mason Harding, Haatef Pourmotabbed, Yamin Li, Kimberly Rogge-Obando, Kate Wang, Sarah E. Goodale, Shiyu Wang, Camden Bibro, Bergen Allee, Caroline Martin, Victoria L. Morgan, Dario J. Englot, Catie Chang
-
-## EEG-fMRI Analysis Pipeline
-
-This repository contains MATLAB and Bash scripts for processing EEG and fMRI data using joint ICA. The pipeline leverages multiple software tools and MATLAB toolboxes.
 
 ## **Requirements**
 To run this project, ensure you have **MATLAB R2023b** installed along with the following toolboxes and external software:
