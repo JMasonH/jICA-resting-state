@@ -24,9 +24,9 @@ To run this project, ensure you have **MATLAB R2023b** installed along with the 
 - [AFNI](https://afni.nimh.nih.gov/) (for fMRI processing)
 
 ### Prepare Data
-**EEG:** Current code uses a '.txt' file containing paths to each individual scan's EEG file. EEG was preprocessed for removal of MRI gradient and ballistocardiogram artifacts using BrainVision Analyzer, after which it was downsampled to 250 Hz. ECG, EOG, EMG electrodes were excluded from the analysis, leaving 26 EEG electrodes.
+**EEG:** Current code uses a '.txt' file containing file paths to each individual scan's EEG file. EEG was preprocessed for removal of MRI gradient and ballistocardiogram artifacts using BrainVision Analyzer, after which it was downsampled to 250 Hz. ECG, EOG, EMG electrodes were excluded from the analysis, leaving 26 EEG electrodes.
 
-**fMRI:** Similarly, initial fMRI data is provided to the analysis code as a '.txt' file containing paths to each individual gunzipped '.nii' scan file. Following slice-timing correction and motion coregistration, multi-echo ICA was implemented to mitigate non-BOLD artifacts, and the fMRI data were spatially normalized to MNI152 standard space.
+**fMRI:** Similarly, initial fMRI data is provided to the analysis code as a '.txt' file containing file paths to each individual gunzipped '.nii' scan file. Following slice-timing correction and motion coregistration, multi-echo ICA was implemented to mitigate non-BOLD artifacts, and the fMRI data were spatially normalized to MNI152 standard space.
 
 
   
