@@ -20,7 +20,7 @@ To run this project, ensure you have **MATLAB R2023b** installed along with the 
 - [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php)
 
 ### **External Software**
-- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) (for spatial ICA and pairwise statistical test)
+- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) (for spatial ICA, pairwise statistical testing, and merging data into group nifti files)
 - [AFNI](https://afni.nimh.nih.gov/) (for visualization)
 
 ### Prepare Data
