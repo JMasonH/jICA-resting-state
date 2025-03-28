@@ -20,8 +20,8 @@ To run this project, ensure you have **MATLAB R2023b** installed along with the 
 - [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php)
 
 ### **External Software**
-- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) (for neuroimaging analysis)
-- [AFNI](https://afni.nimh.nih.gov/) (for fMRI processing)
+- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) (for spatial ICA and pairwise statistical test)
+- [AFNI](https://afni.nimh.nih.gov/) (for visualization)
 
 ### Prepare Data
 **EEG:** Current code uses a '.txt' file containing file paths to each individual scan's EEG file. EEG was preprocessed for removal of MRI gradient and ballistocardiogram artifacts using BrainVision Analyzer, after which it was downsampled to 250 Hz. ECG, EOG, EMG electrodes were excluded from the analysis, leaving 26 EEG electrodes.
