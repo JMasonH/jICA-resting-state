@@ -15,7 +15,7 @@ To run this project, ensure you have **MATLAB Version R2023b or later** installe
 
 ### **MATLAB Packages**
 - [FastICA 2.5](https://research.ics.aalto.fi/ica/fastica/)
-- [Icasso 1.22](https://research.ics.aalto.fi/software/icasso/)
+- [Icasso 1.22](https://research.ics.aalto.fi/ica/icasso/about+download.shtml)
 - [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/)
 - [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php)
 
