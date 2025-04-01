@@ -6,7 +6,7 @@ This repository contains the code of our ISBI 2025 paper:
 Mason Harding, Haatef Pourmotabbed, Yamin Li, Kimberly Rogge-Obando, Kate Wang, Sarah E. Goodale, Shiyu Wang, Camden Bibro, Bergen Allee, Caroline Martin, Victoria L. Morgan, Dario J. Englot, Catie Chang
 
 ## **Requirements**
-To run this project, ensure you have **MATLAB R2023b** installed along with the following toolboxes and external software:
+To run this project, ensure you have **MATLAB Version R2023b or later** installed along with the following toolboxes and external software:
 
 ### **MATLAB Toolboxes**
 - Image Processing Toolbox
