@@ -32,7 +32,7 @@ convolve_hrf;
 
 
 %Dual regression of spatial ICA results to single subject fMRI
-OUT = dual_reg_loop(fmritxtPath);
+OUT = dual_reg_loop(fmritxtPath, workDir, maskPath);
 
 
 %Prepare joint time courses for jICA
