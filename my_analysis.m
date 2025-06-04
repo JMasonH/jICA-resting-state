@@ -1,9 +1,12 @@
+%spm_path is path to SPM12 installation
+
 
 % workDIr is where the jICA analysis will be conducted and where intermediate and output data will be stored
 % fmritxtPath is path to .txt files containing paths to each mri scan
 % eegtxtPath is path to .txt files containing paths to each eeg scan
 % melodicbash is path to bash script that runs melodic on the fMRI scans
 
+spm_path = '/fs1/neurdylab/projects/jICA/test_pipe/spm12';
 
 workDir = '/fs1/neurdylab/projects/jICA/test_02/jICA-neuroimaging-epilepsy/';
 fmritxtPath = '/fs1/neurdylab/projects/jICA/test_pipe/fmri_test_paths.txt';
