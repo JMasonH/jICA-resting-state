@@ -1,5 +1,5 @@
 %DUAL REGRESSION CODE
-function OUT = dual_reg_loop(input_txt_file)
+function OUT = dual_reg_loop(input_txt_file, workDir, maskPath)
 
     if ~exist('fmri_projections', 'dir')
         mkdir('fmri_projections');
@@ -17,8 +17,12 @@ function OUT = dual_reg_loop(input_txt_file)
     % Convert filePaths to a simple cell array of strings
     filePaths = filePaths{1};
     
-    ICA_components= niftiread('/fs1/neurdylab/projects/jICA/test_pipe/melodic_IC.nii.gz');
-    mask = niftiread('/fs1/neurdylab/projects/jICA/MNI152_T1_2mm_brain_mask_filled.nii.gz');
+    nii_file = dir(fullfile(workDir, '**', 'melodic_IC.nii.gz'));
+    if isempty(nii_file)
+        error('Could not find melodic_IC.nii.gz in %s or subdirectories.', workDir);
+    end
+    ICA_components = niftiread(fullfile(nii_file(1).folder, nii_file(1).name));
+    mask = niftiread(maskPath);
 
     % Loop through each entry in the file paths array
     
@@ -66,7 +70,9 @@ function OUT = dual_reg_loop(input_txt_file)
         OUT.spatial = beta_2;
         OUT.time_series = beta_1;
         save(newFilePath, 'OUT'); 
-        fprintf('Anotha One');
+        fprintf('Completed %d/%d\n', i, length(filePaths));
    end
 end   
+
+
 
