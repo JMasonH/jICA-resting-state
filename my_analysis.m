@@ -20,7 +20,7 @@ end
 
 
 %Reads from specified txt files to get paths to eeg outputs and uses them to form EEG power time courses
-OUT = eeg_power_ts(eegtxtPath);
+OUT = eeg_power_ts(eegtxtPath, workDir);
 
 
 %Uses output from previous line to convolve the EEG power time courses with the HRF
