@@ -1,7 +1,7 @@
-addpath('/fs1/neurdylab/projects/jICA/spm12');
+addpath(spm_path);
 
 % Define the directory containing the .mat files
-dataDir = './eeg_data/raw_power';
+dataDir = fullfile(workDir, 'eeg_data', 'raw_power');
 
 % Get a list of all .mat files in the directory
 fileList = dir(fullfile(dataDir, '*.mat'));
