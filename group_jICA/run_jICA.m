@@ -1,17 +1,17 @@
-addpath('/fs1/neurdylab/projects/jICA/FastICA_2.5/FastICA_25'); 
-addpath('/fs1/neurdylab/projects/jICA/icasso122/icasso122')
+addpath(fastica_path); 
+addpath(icasso_path); 
 
-if ~exist('group_jICA_results', 'dir')
-    mkdir('group_jICA_results');
+if ~exist(fullfile(workDir, 'group_jICA_results'), 'dir')
+    mkdir(fullfile(workDir, 'group_jICA_results'));
 end
 
-dataDir = './pre_jICA_data'; 
+dataDir = fullfile(workDir, 'pre_jICA_data'); 
 
 
 List = dir(fullfile(dataDir, '*.mat'));
 band_labels = {'delta','theta','alpha','beta','gamma'};
 
-pathsToAdd = {'/fs1/neurdylab/projects/jICA/FastICA_2.5/FastICA_25', '/fs1/neurdylab/projects/jICA/icasso122/icasso122'};
+pathsToAdd = {fastica_path, icasso_path};
 
 addpathFcn = @() cellfun(@(p) addpath(p), pathsToAdd, 'UniformOutput', false);
 q = parallel.pool.Constant(addpathFcn);
@@ -83,7 +83,7 @@ for band = 1:length(band_labels)
     
     close(gcf);
  
-    newFilePath = fullfile('./group_jICA_results', [band_labels{band}, '-jica_full', '.mat']);
+    newFilePath = fullfile(workDir, 'group_jICA_results', [band_labels{band}, '-jica_full', '.mat']);
     OUT.icasig = icasig;
     OUT.A = A;
     OUT.B = B;
