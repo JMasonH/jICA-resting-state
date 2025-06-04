@@ -1,10 +1,11 @@
 % Define directories
-eegDir = './eeg_data/hrf_conv_power';
-mriDir = './fmri_projections';
+eegDir = fullfile(workDir, 'eeg_data', 'hrf_conv_power');
+mriDir = fullfile(workDir, 'fmri_projections');
+
 if ~exist('pre_jICA_data', 'dir')
     mkdir('pre_jICA_data');
 end
-outputDir = './pre_jICA_data';
+outputDir = fullfile(workDir, 'pre_jICA_data');
 
 % Get list of EEG and MRI files
 eegFiles = dir(fullfile(eegDir, '*.mat'));
@@ -61,9 +62,9 @@ for eegIdx = 1:length(eegFiles)
     % Permute the result to the final desired shape (67x575x5)
     joint_data = permute(joint_data, [3, 2, 1]); % 67x575x5
 
-    if commonStr(1:4) = 'vpat'
+    if commonStr(1:4) == 'vpat'
         joint_data(68, :, :) = 1; % add a dummy variable for the group
-        elsif commonStr(1:4) = 'vcon'
+    elseif commonStr(1:4) == 'vcon'
         joint_data(68, :, :) = 0; % add a dummy variable for the group
     end 
     
