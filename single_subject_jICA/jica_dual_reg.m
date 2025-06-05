@@ -1,11 +1,10 @@
+% Open the file
 
-    % Open the file
+    path_dir = fullfile(workDir, 'pre_jICA_data');
+    mm_dir = fullfile(workDir, 'group_jICA_results');
 
-    path_dir = './pre_jICA_data';
-    mm_dir = './group_jICA_results';
-
-    if ~exist('./single_subject_jICA_projections', 'dir')
-        mkdir('./single_subject_jICA_projections');
+    if ~exist(fullfile(workDir, 'single_subject_jICA_projections'), 'dir')
+        mkdir(fullfile(workDir, 'single_subject_jICA_projections'));
     end
 
     sub_files = dir(fullfile(path_dir, '*.mat'));
@@ -76,10 +75,11 @@
             fileName = fileName(1:n);
         end
 
-        newFilePath = fullfile('./single_subject_jICA_projections/', [fileName, '_jICA', '.mat']);
+        newFilePath = fullfile(workDir, 'single_subject_jICA_projections/', [fileName, '_jICA', '.mat']);
         OUT.spatial = spatial;
         OUT.time_series = time_series;
         save(newFilePath, 'OUT'); 
         fprintf('Processed subject: %s\n', fileName);
    end
+
 
