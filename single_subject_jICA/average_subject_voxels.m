@@ -1,7 +1,5 @@
-
-
 % Define the parent directory
-parent_dir = './single_subject_jICA_projections/spatial_maps'; % Change this to your actual path
+parent_dir = fullfile(workDir, 'single_subject_jICA_projections', 'spatial_maps'); % Change this to your actual path
 
 % Create the directory to move multiple observations
 multi_obs_dir = fullfile(parent_dir, 'multiple_observations');
@@ -73,3 +71,4 @@ for i = 1:length(unique_patids)
 end
 
 disp('Averaging process completed for all patients.');
+
