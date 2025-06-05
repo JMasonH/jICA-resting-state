@@ -1,13 +1,15 @@
+#!/bin/bash
+
 module load GCC/8.2.0
 module load OpenMPI/3.1.4
 module load FSL/6.0.1
 
-# Set directories and files
-INPUT_DIR="/fs1/neurdylab/projects/jICA/test_pipe/jICA-neuroimaging-epilepsy/single_subject_jICA_projections/spatial_maps/t-test"
-OUTPUT_DIR="/fs1/neurdylab/projects/jICA/test_pipe/jICA-neuroimaging-epilepsy/single_subject_jICA_projections/spatial_maps/t-test/results"
-DESIGN_MAT="/fs1/neurdylab/projects/jICA/test_pipe/jICA-neuroimaging-epilepsy/design_test.mat"
-DESIGN_CON="/fs1/neurdylab/projects/jICA/test_pipe/jICA-neuroimaging-epilepsy/design.con"
-MASK="/fs1/neurdylab/MNI152_T1_2mm_brain_mask_filled.nii.gz"
+# Arguments passed from MATLAB
+INPUT_DIR="$1"
+OUTPUT_DIR="$2"
+DESIGN_MAT="$3"
+DESIGN_CON="$4"
+MASK="$5"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
@@ -20,21 +22,17 @@ foo() {
 
     echo "Processing comp_${comp_num}"
 
-    # Create a temporary directory
     tmp_dir=$(mktemp -d -t randomise-XXXXXXXX)
-    mkdir -p $tmp_dir/INPUTS $tmp_dir/OUTPUTS
+    mkdir -p "$tmp_dir/INPUTS" "$tmp_dir/OUTPUTS"
 
-    # Check if input file exists
     if [ ! -f "$input_file" ]; then
         echo "Error: Input file $input_file not found"
-        rm -rf $tmp_dir
+        rm -rf "$tmp_dir"
         return 1
     fi
 
-    # Copy input file to temporary directory
     cp "$input_file" "$tmp_dir/INPUTS/"
 
-    # Run randomise
     randomise -i "$tmp_dir/INPUTS/comp_${comp_num}_4D.nii.gz" \
               -o "$tmp_dir/OUTPUTS/comp_${comp_num}" \
               -d "$DESIGN_MAT" \
@@ -43,27 +41,22 @@ foo() {
               -x -c 2.3 -n 5000 \
               -T
 
-    # Copy results back to output directory
-    cp $tmp_dir/OUTPUTS/comp_${comp_num}* "$OUTPUT_DIR/"
+    cp "$tmp_dir/OUTPUTS/comp_${comp_num}"* "$OUTPUT_DIR/"
+    rm -rf "$tmp_dir"
 
-    # Clean up temporary directory
-    rm -rf $tmp_dir
-
-    echo "Completed t-test for comp_$comp_num"
+    echo "Completed t-test for comp_${comp_num}"
 }
 
-# Export the function so it's available to subshells
 export -f foo
 
-# Set the number of parallel processes
+# Parallel processing
 N=8
-
-# Run t-tests in parallel
 (
 for comp_num in {1..80}; do
     ((i=i%N)); ((i++==0)) && wait
     foo "$comp_num" &
 done
+wait
 )
 
 echo "All t-tests completed"
