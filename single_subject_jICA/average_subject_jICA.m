@@ -1,6 +1,5 @@
-
 % Define the parent directory
-base_dir = '/fs1/neurdylab/projects/jICA/test_pipe/jICA-neuroimaging-epilepsy/single_subject_jICA_projections';
+base_dir = fullfile(workDir, 'single_subject_jICA_projections');
 
 % Define output directories
 patients_dir = fullfile(base_dir, 'patients');
