@@ -1,20 +1,20 @@
 
-path_dir = './eeg_data/hrf_conv_power';
+path_dir = fullfile(workDir, 'eeg_data', 'hrf_conv_power');
 files = dir(fullfile(path_dir, '*.mat'));
 
-if ~exist('./single_subject_jICA_projections/eeg', 'dir')
-    mkdir('./single_subject_jICA_projections/eeg');
+if ~exist(fullfile(workDir, 'single_subject_jICA_projections/eeg'), 'dir')
+    mkdir(fullfile(workDir, 'single_subject_jICA_projections/eeg'));
     end
 
-c_delta = load('./group_jICA_results/delta-jica_full.mat');
+c_delta = load(fullfile(workDir, 'group_jICA_results', 'delta-jica_full.mat'));
 d = c_delta.OUT.A;
-c_theta = load('./group_jICA_results/theta-jica_full.mat');
+c_theta = load(fullfile(workDir, 'group_jICA_results', 'theta-jica_full.mat'));
 t = c_theta.OUT.A;
-c_alpha = load('./group_jICA_results/alpha-jica_full.mat');
+c_alpha = load(fullfile(workDir, 'group_jICA_results', 'alpha-jica_full.mat'));
 a = c_alpha.OUT.A;
-c_beta = load('./group_jICA_results/beta-jica_full.mat');
+c_beta = load(fullfile(workDir, 'group_jICA_results', 'beta-jica_full.mat'));
 b = c_beta.OUT.A;
-c_gamma = load('./group_jICA_results/gamma-jica_full.mat');
+c_gamma = load(fullfile(workDir, 'group_jICA_results', 'gamma-jica_full.mat'));
 g = c_gamma.OUT.A; 
 
 tica_mat = cat(2, d,t,a,b,g);
@@ -87,7 +87,7 @@ for i = 1:length(files)
     end
 
     [~, fileName, ~] = fileparts(files(i).name);
-    newFilePath = fullfile('./single_subject_jICA_projections/eeg', [fileName, '_eeg.mat']);
+    newFilePath = fullfile(workDir, 'single_subject_jICA_projections/eeg', [fileName, '_eeg.mat']);
     OUT.spatial = spatial;
     OUT.time_series = time;
     save(newFilePath, 'OUT'); 
