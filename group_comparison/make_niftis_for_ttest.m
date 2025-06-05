@@ -1,8 +1,8 @@
 
 
 % Define input and output directories
-data_dir = './single_subject_jICA_projections/spatial_maps';
-brain_mask_file = '/fs1/neurdylab/projects/jICA/MNI152_T1_2mm_brain_mask_filled.nii.gz';
+data_dir = fullfile(workDir, 'single_subject_jICA_projections', 'spatial_maps');
+brain_mask_file = maskPath;
 
 output_dir = fullfile(data_dir, 't-test');
 if ~exist(output_dir, 'dir')
